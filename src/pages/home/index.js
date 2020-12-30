@@ -1,19 +1,10 @@
 import React from 'react';
+import MainLayout from '../../components/layout/main';
 
-import { Switch, Route, HashRouter, Redirect } from 'react-router-dom';
-import MainPage from '../main';
-import ErrorPage from '../error';
-
-const Home = () => (
-  <HashRouter>
-
-    <Switch>
-      <Route exact path='/' component={MainPage} />
-      <Route exact path='/error' component={ErrorPage} />
-      <Redirect to="/error" />
-
-    </Switch>
-  </HashRouter>
+const MainPage = () => (
+    <MainLayout>
+        <h1>Welcome!</h1>
+    </MainLayout>
 );
 
-export default Home;
+export default MainPage;

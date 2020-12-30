@@ -1,12 +1,21 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { AuthContext } from './context';
 
+import Main from './pages/main';
+import { initialState, reducer } from "./store/reducer";
 
-import Home from './pages/home';
+const App = () => {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
-const App = () => (
-  <BrowserRouter>
-    <Home />
-  </BrowserRouter>
-);
+  return (
+    <AuthContext.Provider
+      value={{
+        state,
+        dispatch
+      }}
+    >
+      <Main />
+    </AuthContext.Provider>
+  )
+};
 export default App;
