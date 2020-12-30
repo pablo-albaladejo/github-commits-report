@@ -9,9 +9,7 @@ import ProtectedRoute from '../../router';
 
 const Home = () => {
   return (
-    <BrowserRouter
-      basename={process.env.PUBLIC_URL}
-    >
+    <BrowserRouter>
       <Switch>
         <ProtectedRoute exact path='/' component={HomePage} />
         <Route path='/login' component={LoginPage} />
