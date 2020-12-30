@@ -3,7 +3,7 @@ import MainLayout from '../../components/layout/main';
 
 const MainPage = () => (
     <MainLayout>
-        <h1>Welcome!</h1>
+        <h1>Welcome home!</h1>
     </MainLayout>
 );
 

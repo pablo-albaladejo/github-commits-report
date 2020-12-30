@@ -5,14 +5,16 @@ import HomePage from '../home';
 import ErrorPage from '../error';
 import ProtectedRoute from '../../router';
 
-const Home = () => (
-  <BrowserRouter>
-    <Switch>
-      <ProtectedRoute exact path='/' component={HomePage} />
-      <Route exact path='/login' component={LoginPage} />
-      <Route exact path='/error' component={ErrorPage} />
-      <Redirect to="/error" />
-    </Switch>
-  </BrowserRouter>
-)
+const Home = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <ProtectedRoute exact path='/' component={HomePage} />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/error' component={ErrorPage} />
+        <Redirect to="/error" />
+      </Switch>
+    </BrowserRouter>
+  )
+}
 export default Home;

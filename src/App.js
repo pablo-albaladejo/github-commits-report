@@ -1,23 +1,21 @@
 import React from 'react';
-//import { AuthContext } from './context';
-import Home from './pages/home';
+import { AuthContext } from './context';
 
-//import Main from './pages/main';
-//import { initialState, reducer } from "./store/reducer";
+import Main from './pages/main';
+import { initialState, reducer } from "./store/reducer";
 
 const App = () => {
-  //const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
-/*     <AuthContext.Provider
+    <AuthContext.Provider
       value={{
         state,
         dispatch
       }}
     >
       <Main />
-    </AuthContext.Provider> */
-    <Home/>
+    </AuthContext.Provider>
   )
 };
 export default App;
