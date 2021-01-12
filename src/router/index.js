@@ -3,12 +3,12 @@ import { Route, Redirect } from 'react-router-dom';
 import { AuthContext } from '../context';
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
-  const { state } = React.useContext(AuthContext);
+  const { auth } = React.useContext(AuthContext);
   return (
     <Route
       {...props}
       render={localProps => (
-        state.isLoggedIn ?
+        auth.isLoggedIn ?
           <Component {...localProps} /> :
           <Redirect to='/login' />
       )}
