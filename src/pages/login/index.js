@@ -68,22 +68,22 @@ export default function Login() {
                 <div className="loader"></div>
               </div>
             ) : (
-              <>
-                {
-                  // Link to request GitHub access
-                }
-                <a
-                  className="login-link"
-                  href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
-                  onClick={() => {
-                    setData({ ...data, errorMessage: "" });
-                  }}
-                >
-                  <GithubIcon />
-                  <span>Login with GitHub</span>
-                </a>
-              </>
-            )}
+                <>
+                  {
+                    // Link to request GitHub access
+                  }
+                  <a
+                    className="login-link"
+                    href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
+                    onClick={() => {
+                      setData({ ...data, errorMessage: "" });
+                    }}
+                  >
+                    <GithubIcon />
+                    <span>Login with GitHub</span>
+                  </a>
+                </>
+              )}
           </div>
         </div>
       </section>
