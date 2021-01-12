@@ -5,10 +5,10 @@ import GithubIcon from "mdi-react/GithubIcon";
 import { AuthContext } from "../../context";
 
 export default function Login() {
-  const { state, dispatch } = useContext(AuthContext);
+  const { auth, authDispatch } = useContext(AuthContext);
   const [data, setData] = useState({ errorMessage: "", isLoading: false });
 
-  const { client_id, redirect_uri } = state;
+  const { client_id, redirect_uri } = auth;
 
   useEffect(() => {
     // After requesting Github access, Github redirects back to your app with a code parameter
@@ -22,12 +22,12 @@ export default function Login() {
       setData({ ...data, isLoading: true });
 
       const requestData = {
-        client_id: state.client_id,
-        redirect_uri: state.redirect_uri,
-        client_secret: state.client_secret,
+        client_id: auth.client_id,
+        redirect_uri: auth.redirect_uri,
+        client_secret: auth.client_secret,
         code: newUrl[1]
       };
-      const proxy_url = state.proxy_url;
+      const proxy_url = auth.proxy_url;
 
       // Use code parameter and other parameters to make POST request to proxy_server
       fetch(proxy_url, {
@@ -36,7 +36,7 @@ export default function Login() {
       })
         .then(response => response.json())
         .then(data => {
-          dispatch({
+          authDispatch({
             type: "LOGIN",
             payload: { token: data, isLoggedIn: true }
           });
@@ -48,9 +48,9 @@ export default function Login() {
           });
         });
     }
-  }, [state, dispatch, data]);
+  }, [auth, authDispatch, data]);
 
-  if (state.isLoggedIn) {
+  if (auth.isLoggedIn) {
     return <Redirect to="/" />;
   }
 
